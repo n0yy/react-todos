@@ -5,15 +5,11 @@ import Title from "./components/todos/Title";
 import { useState } from "react";
 
 export default function App() {
-  const [text, setText] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [textInput, setTextInput] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const task = [...todos, text];
-    setTodos(task);
-
-    setText("");
+  // buat callback function buat dijadiin props ke FormTodos
+  const todos = (item) => {
+    setTextInput([...textInput, item]);
   };
 
   return (
@@ -24,23 +20,18 @@ export default function App() {
       {/* main section */}
       <section
         id="card-main"
-        className="flex items-center min-h-screen justify-center"
+        className="flex items-center min-h-screen justify-center w-full py-20"
       >
         <div className="bg-white/25 backdrop-blur-sm w-3/4 rounded-xl p-10 border-t-[1px] border-l-[1px] shadow-xl">
           {/* title */}
           <Title />
           {/* form task */}
-          <FormTodos
-            text={text}
-            handleSubmit={handleSubmit}
-            todos={todos}
-            setText={setText}
-          />
+          <FormTodos text={todos} />
           {/* card task */}
-          <div className="flex items-center justify-around gap-5">
+          <div className="grid grid-cols-3 gap-5">
             {/* card */}
-            {todos.map((todo, index) => {
-              return <CardTodos item={todo} key={index} />;
+            {textInput.map((item, index) => {
+              return <CardTodos item={item} key={index} />;
             })}
           </div>
         </div>
