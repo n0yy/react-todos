@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Building Todo List using ReactJS and TailwindCSS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Before you running command below please run it `npm install`
 
 ## Available Scripts
 
