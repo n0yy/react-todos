@@ -9,6 +9,7 @@ export default function App() {
   useEffect(() => {
     document.body.style.backgroundImage = `url("/bg.png")`;
     document.body.classList = "bg-no-repeat bg-cover";
+    document.title = "React Todos";
   });
 
   const [textInput, setTextInput] = useState([]);
