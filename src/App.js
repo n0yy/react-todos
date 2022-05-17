@@ -2,9 +2,15 @@ import CardTodos from "./components/todos/CardTodos";
 import FormTodos from "./components/todos/FormTodos";
 import Title from "./components/todos/Title";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
+  // adding style to body
+  useEffect(() => {
+    document.body.style.backgroundImage = `url("/bg.png")`;
+    document.body.classList = "bg-no-repeat bg-cover";
+  });
+
   const [textInput, setTextInput] = useState([]);
 
   // buat callback function buat dijadiin props ke FormTodos
@@ -13,10 +19,7 @@ export default function App() {
   };
 
   return (
-    <main
-      className="min-w-full min-h-screen"
-      style={{ backgroundImage: `url("/bg.png")` }}
-    >
+    <main className="min-w-full min-h-screen">
       {/* main section */}
       <section
         id="card-main"
@@ -28,7 +31,7 @@ export default function App() {
           {/* form task */}
           <FormTodos text={todos} />
           {/* card task */}
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-3 mx-auto">
             {/* card */}
             {textInput.map((item, index) => {
               return <CardTodos item={item} key={index} />;
